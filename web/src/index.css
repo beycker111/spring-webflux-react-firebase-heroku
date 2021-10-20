@@ -105,3 +105,16 @@ body {
     float: right;
   }
   
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ea3546;
+    color: white;
+    text-align: center;
+  }
+
+  .title-footer{
+    font-size: 25px;
+  }

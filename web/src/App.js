@@ -19,6 +19,8 @@ import AnswerFormPage from './pages/AnswerFormPage'
 import OwnerQuestionsPage from './pages/OwnerQuestionsPage'
 import { useAuthState } from "react-firebase-hooks/auth";
 
+import Footer from './components/Footer';
+
 firebase.initializeApp({
   apiKey: "AIzaSyB_P_-s5XErkbcWYRCinoqihnpl6wcimHU",
   authDomain: "question-and-answer-68891.firebaseapp.com",
@@ -66,6 +68,7 @@ const App = ({ dispatch }) => {
           </Switch>
         </>
       }
+      <Footer></Footer>
     </Router>
   )
 }
