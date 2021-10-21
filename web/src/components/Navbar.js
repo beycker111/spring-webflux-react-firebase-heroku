@@ -6,6 +6,8 @@ export const PublicNavbar = () => (
     <section>
       <Link to="/">Home</Link>
       <Link to="/questions">Questions</Link>
+      <Link to="/login">Login</Link>
+      <Link to="/signup">SignUp</Link>
     </section>
   </nav>
 )

@@ -6,8 +6,8 @@ import {
   Redirect,
 } from 'react-router-dom'
 import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
+//import "firebase/firestore";
+//import "firebase/auth";
 import { login, logout } from './actions/authActions';
 
 import { PublicNavbar, PrivateNavbar } from './components/Navbar'
@@ -20,7 +20,11 @@ import OwnerQuestionsPage from './pages/OwnerQuestionsPage'
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import Footer from './components/Footer';
+import { auth } from './services/firebase';
 
+import SignUp from './pages/SignUp';
+import Login from './pages/Login';
+/*
 firebase.initializeApp({
   apiKey: "AIzaSyB_P_-s5XErkbcWYRCinoqihnpl6wcimHU",
   authDomain: "question-and-answer-68891.firebaseapp.com",
@@ -32,6 +36,7 @@ firebase.initializeApp({
 });
 
 const auth = firebase.auth();
+*/
 
 const App = ({ dispatch }) => {
   const [user] = useAuthState(auth);
@@ -64,6 +69,8 @@ const App = ({ dispatch }) => {
             <Route exact path="/questions" component={QuestionsPage} />
             <Route exact path="/question/:id" component={SingleQuestionPage} />
             <Route exact path="/answer/:id" component={AnswerFormPage} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
             <Redirect to="/" />
           </Switch>
         </>
