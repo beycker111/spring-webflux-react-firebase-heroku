@@ -24,7 +24,6 @@ export default class SignUp extends Component {
     async handleSubmit(event) {
       event.preventDefault();
       this.setState({ error: '' });
-      console.log(this.state);
       try {
         await signup(this.state.email, this.state.password);
       } catch (error) {
