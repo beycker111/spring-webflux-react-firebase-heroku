@@ -33,50 +33,50 @@ export default class Login extends Component {
 
     render() {
         return (
-          <div>
-            <form
-              autoComplete="off"
-              onSubmit={this.handleSubmit}
-            >
-              <h1>
-                Login to
-                <Link to="/">
-                  Chatty
-                </Link>
-              </h1>
-              <p>
-                Fill in the form below to login to your account.
-              </p>
-              <div>
-                <input
-                  placeholder="Email"
-                  name="email"
-                  type="email"
-                  onChange={this.handleChange}
-                  value={this.state.email}
-                />
-              </div>
-              <div>
-                <input
-                  placeholder="Password"
-                  name="password"
-                  onChange={this.handleChange}
-                  value={this.state.password}
-                  type="password"
-                />
-              </div>
-              <div>
-                {this.state.error ? (
-                  <p>{this.state.error}</p>
-                ) : null}
-                <button type="submit">Login</button>
-              </div>
-              <hr />
-              <p>
-                Don't have an account? <Link to="/signup">Sign up</Link>
-              </p>
-            </form>
-          </div>
+          <section>
+            <div>
+              <form
+                autoComplete="off"
+                onSubmit={this.handleSubmit}
+              >
+                <h1>
+                  Login
+                </h1>
+                <p>
+                  Fill in the form below to login to your account.
+                </p>
+                <div>
+                  <input
+                    placeholder="Email"
+                    name="email"
+                    type="email"
+                    onChange={this.handleChange}
+                    value={this.state.email}
+                  />
+                </div>
+                <div>
+                  <input
+                    placeholder="Password"
+                    name="password"
+                    onChange={this.handleChange}
+                    value={this.state.password}
+                    type="password"
+                  />
+                </div>
+                <div>
+                  {this.state.error ? (
+                    <p>{this.state.error}</p>
+                  ) : null}
+                  <button type="submit">Login</button>
+                </div>
+                <hr />
+                <p>
+                  Don't have an account? <Link to="/signup">Sign up</Link>
+                </p>
+              </form>
+            </div>
+          </section>
+          
         );
     }
 }

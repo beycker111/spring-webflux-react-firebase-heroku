@@ -1,8 +1,12 @@
-const URL_BASE = 'https://still-wildwood-12948.herokuapp.com';
+const URL_BASE = 'http://localhost:8080';
+//const URL_BASE = 'https://still-wildwood-12948.herokuapp.com';
 
 export const LOADING = 'LOADING'
 export const LOADED_SUCCESS = 'LOADED_SUCCESS'
 export const LOADED_FAILURE = 'LOADED_FAILURE'
+export const SEARCH = 'SEARCH'
+export const SEARCH_FIRST = 'SEARCH_FIRST'
+export const FILTER_CATEGORY = 'FILTER_CATEGORY'
 
 export const loading = () => ({ type: LOADING })
 
@@ -12,6 +16,71 @@ export const success = payload => ({
 });
 
 export const failure = () => ({ type: LOADED_FAILURE })
+
+export const search = payload => ({
+    type: SEARCH,
+    payload
+});
+
+export const searchFirst = payload => ({
+    type: SEARCH_FIRST,
+    payload
+});
+
+export const category = payload => ({
+    type: FILTER_CATEGORY,
+    payload
+});
+
+export function filterCategory(categorySearch) {
+    return async dispatch => {
+        dispatch(loading())
+        try {
+            const response = await fetch(
+                `${URL_BASE}/getAll`
+            )
+            const data = await response.json()
+            dispatch(success({ questions: data, redirect: null }))
+            dispatch(category({category: categorySearch}));
+        } catch (error) {
+            dispatch(failure())
+        }
+    }
+    
+}
+
+export function searchQuestions(textSearch) {
+    return async dispatch => {
+        dispatch(loading())
+        try {
+            const response = await fetch(
+                `${URL_BASE}/getAll`
+            )
+            const data = await response.json()
+            dispatch(success({ questions: data, redirect: null }))
+            dispatch(search({text: textSearch}));
+        } catch (error) {
+            dispatch(failure())
+        }
+    }
+    
+}
+
+export function searchFirstQuestions(busqueda) {
+    return async dispatch => {
+        dispatch(loading())
+        try {
+            const response = await fetch(
+                `${URL_BASE}/getAll`
+            )
+            const data = await response.json()
+            dispatch(success({ questions: data, redirect: null }))
+            dispatch(searchFirst({text: busqueda}));
+        } catch (error) {
+            dispatch(failure())
+        }
+    }
+}
 
 export function fetchQuestions() {
     return async dispatch => {

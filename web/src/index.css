@@ -90,6 +90,11 @@ body {
     border-radius: 4px;
     padding: 1rem 1.5rem;
     margin: 1rem 0;
+    /*Esto es del answer*/
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
   }
   
   .button {
@@ -118,3 +123,21 @@ body {
   .title-footer{
     font-size: 25px;
   }
+
+
+  /*esto es del answer */
+
+  .answer button{
+    cursor: pointer;
+    background-color: #FF0026;
+    margin-right: 20px;
+    border: 1px solid #C00;
+    color: #fff;
+  }
+  .answer button:hover{
+    background-color: #F4BCBC;
+    cursor: pointer;
+    color: #000;
+  }
+
+    /*fin del answer */
