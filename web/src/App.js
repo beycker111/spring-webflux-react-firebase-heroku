@@ -6,8 +6,6 @@ import {
   Redirect,
 } from 'react-router-dom'
 import firebase from "firebase/app";
-//import "firebase/firestore";
-//import "firebase/auth";
 import { login, logout } from './actions/authActions';
 
 import { PublicNavbar, PrivateNavbar } from './components/Navbar'
@@ -24,19 +22,6 @@ import { auth } from './services/firebase';
 
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
-/*
-firebase.initializeApp({
-  apiKey: "AIzaSyB_P_-s5XErkbcWYRCinoqihnpl6wcimHU",
-  authDomain: "question-and-answer-68891.firebaseapp.com",
-  projectId: "question-and-answer-68891",
-  storageBucket: "question-and-answer-68891.appspot.com",
-  messagingSenderId: "619485986646",
-  appId: "1:619485986646:web:969ca102e6aa912da660f7",
-  measurementId: "G-ZSV58YM3C3"
-});
-
-const auth = firebase.auth();
-*/
 
 const App = ({ dispatch }) => {
   const [user] = useAuthState(auth);
