@@ -65,6 +65,7 @@ const QuestionsPage = ({ dispatch, loading, questions, redirect, hasErrors }) =>
                 </select>
             </p>
             {renderQuestions()}
+            <br /><br /><br /><br /><br /><br />
         </section>
     )
 }

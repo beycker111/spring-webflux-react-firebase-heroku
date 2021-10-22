@@ -29,7 +29,6 @@ const FormPage = ({ dispatch, loading, redirect, match,hasErrors, question, user
     const renderQuestion = () => {
         if (loading.question) return <p>Loading question...</p>
         if (hasErrors.question) return <p>Unable to display question.</p>
-
         return <Question question={question} />
     }
 
@@ -41,7 +40,7 @@ const FormPage = ({ dispatch, loading, redirect, match,hasErrors, question, user
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
-                    <label for="answer">Answer</label>
+                    <label htmlFor="answer">Answer</label>
                     <textarea id="answer" {...register("answer", { required: true, maxLength: 300 })} />
                 </div>
                 <button type="submit" className="button" disabled={loading} >{

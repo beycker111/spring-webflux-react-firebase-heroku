@@ -1,6 +1,5 @@
-//const URL_BASE = 'http://localhost:8080';
-
-const URL_BASE = 'https://still-wildwood-12948.herokuapp.com';
+const URL_BASE = 'http://localhost:8080';
+//const URL_BASE = 'https://still-wildwood-12948.herokuapp.com';
 
 export const LOADING = 'LOADING'
 export const LOADED_SUCCESS = 'LOADED_SUCCESS'
@@ -34,56 +33,23 @@ export const category = payload => ({
 });
 
 export function filterCategory(categorySearch) {
-    return async dispatch => {
-        dispatch(loading())
-        try {
-            const response = await fetch(
-                `${URL_BASE}/getAll`
-            )
-            const data = await response.json()
-            dispatch(success({ questions: data, redirect: null }))
-            dispatch(category({category: categorySearch}));
-        } catch (error) {
-            dispatch(failure())
-        }
-    }
+   return updateList(category({category: categorySearch}));
     
 }
 
 export function searchQuestions(textSearch) {
-    return async dispatch => {
-        dispatch(loading())
-        try {
-            const response = await fetch(
-                `${URL_BASE}/getAll`
-            )
-            const data = await response.json()
-            dispatch(success({ questions: data, redirect: null }))
-            dispatch(search({text: textSearch}));
-        } catch (error) {
-            dispatch(failure())
-        }
-    }
-    
+   return updateList(search({text: textSearch}));
 }
 
 export function searchFirstQuestions(busqueda) {
-    return async dispatch => {
-        dispatch(loading())
-        try {
-            const response = await fetch(
-                `${URL_BASE}/getAll`
-            )
-            const data = await response.json()
-            dispatch(success({ questions: data, redirect: null }))
-            dispatch(searchFirst({text: busqueda}));
-        } catch (error) {
-            dispatch(failure())
-        }
-    }
+   return updateList(searchFirst({text: busqueda}));
 }
 
 export function fetchQuestions() {
+   return updateList(null);
+}
+
+const updateList = (param) => {
     return async dispatch => {
         dispatch(loading())
         try {
@@ -92,6 +58,9 @@ export function fetchQuestions() {
             )
             const data = await response.json()
             dispatch(success({ questions: data, redirect: null }))
+            if(param != null){
+                dispatch(param);
+            }
         } catch (error) {
             dispatch(failure())
         }

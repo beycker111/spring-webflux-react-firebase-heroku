@@ -7,11 +7,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+import co.com.sofka.questions.service.MailService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Objects;
 
 @Service
 @Validated
 public class AddAnswerUseCase implements SaveAnswer {
+
+    @Autowired
+    MailService mailService;
+
     private final AnswerRepository answerRepository;
     private final MapperUtils mapperUtils;
     private final GetUseCase getUseCase;
@@ -28,6 +35,11 @@ public class AddAnswerUseCase implements SaveAnswer {
                 answerRepository.save(mapperUtils.mapperToAnswer().apply(answerDTO))
                         .map(answer -> {
                             question.getAnswers().add(answerDTO);
+                            mailService.sendMail(
+                                    question.getUserEmail(),
+                                    "Se ha registrado una respuesta a la pregunta " + question.getQuestion(),
+                                    answer.getAnswer()
+                            );
                             return question;
                         })
         );
