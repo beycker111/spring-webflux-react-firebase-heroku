@@ -3,6 +3,7 @@ import { Answer } from "../components/Answer";
 import { loading, success, failure } from "../actions/questionActions";
 
 //const URL_BASE = 'http://localhost:8080';
+
 const URL_BASE = 'https://still-wildwood-12948.herokuapp.com';
 
 /*
